@@ -9,12 +9,27 @@ const Navbar = () => {
   const [collapse, setCollapse] = useState("nav__menu");
   const [toggleIcon, setToggleIcon] = useState("toggler__icon");
   const [todos, setTodos] = useState([])
+  const modal = document.getElementById("myModal");
+  const btn = document.getElementById("myBtn");
+  const span = document.getElementsByClassName("close")[0];
+  
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
 
   const addTask = (userInput) => {
     if(userInput) {
       const newItem = {
         id: Math.random().toString(36).substr(2,9),
-        task: userInput,
+        task: userInput,  
         complete: false
       }
       setTodos([...todos, newItem])
@@ -46,7 +61,7 @@ const Navbar = () => {
       ? setToggleIcon("toggler__icon toggle")
       : setToggleIcon("toggler__icon");
   };
-
+ 
   return (
     <>
     <div className="nav__wrapper">
