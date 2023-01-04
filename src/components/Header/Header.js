@@ -8,7 +8,7 @@ const Header = () => {
     const addTask = (userInput) => {
         if(userInput) {
           const newItem = {
-            id: Math.random().toString(36).substr(2,9),
+            id: Math.random().toString(36),
             task: userInput,
             complete: false
           }
